@@ -37,6 +37,7 @@ const encoder = {
    */
   flags(webcam) {
     return `-f video4linux2 -i ${webcam} -f webm -deadline realtime pipe:1`;
+    //return `-y -framerate 24 -i ${webcam} -strict experimental -ac 2 -b:a 64k -ar 44100 -c:v libx264 -pix_fmt yuv420p -profile:v baseline -level 2.1 -maxrate 500K -bufsize 2M -crf 18 -r 10 -g 30  -f hls -hls_time 9 -hls_list_size 0 -s 480x270 ts/480x270.m3u8`
   },
   /*
    * MIME type of the output stream
@@ -54,6 +55,7 @@ const encoder = {
    *  Default: shown below, it isn't perfect but covers most of the cases
    */
   isSuccessful(encoderProcess, cb) {
+    console.log('yesss');
     let started = false;
     encoderProcess.stderr.setEncoding('utf8');
     encoderProcess.stderr.on('data', (data) => {
@@ -113,7 +115,7 @@ const server = webcam.createHTTPStreamingServer({
     '/list_webcams': (req, res, reqUrl) => { res.end('<html>...</html>'); }
   },
   encoder: encoder
-}).listen(8000);
+}).listen(process.env.PORT || 8000);
  
 /* Returns a promise that resolves to the video stream (stream.Readable) */
 const videoStream = webcam.streamWebcam('/dev/video0', encoder);

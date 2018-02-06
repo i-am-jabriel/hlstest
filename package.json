@@ -1,0 +1,29 @@
+{
+  "name": "hls-test",
+  "version": "1.0.0",
+  "description": "testing hls streaming",
+  "main": "server/index.js",
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
+    "http": "^0.0.0",
+    "hls-server": "^1.4.1",
+    "webcam-http-streaming": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-am-jabriel/hlstest.git"
+  },
+  "keywords": [
+    "hls"
+  ],
+  "author": "jabriel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i-am-jabriel/hlstest/issues"
+  },
+  "homepage": "https://github.com/i-am-jabriel/hlstest#readme"
+}
